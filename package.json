@@ -1,0 +1,30 @@
+{
+  "name": "isomorphic-application-poc",
+  "version": "1.0.0",
+  "description": "Full Stack js POC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeNats/isomorphic-application-poc.git"
+  },
+  "author": "Michail Tsougkranis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikeNats/isomorphic-application-poc/issues"
+  },
+  "homepage": "https://github.com/MikeNats/isomorphic-application-poc#readme",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-karma": "^0.12.2",
+    "karma-jasmine": "^0.3.8",
+    "lodash": "^4.9.0",
+    "mongoose": "^4.4.12",
+    "nodemon": "^1.9.1"
+  }
+}
