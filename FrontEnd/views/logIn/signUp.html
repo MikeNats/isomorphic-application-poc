@@ -1,0 +1,17 @@
+<form id='signUp' ng-controller="signUpCtrl">
+	<fieldset>
+		<title>User Name</title>
+		<input ng-model='signUp.userName' type='text'/>
+	</fieldset>
+	<fieldset>
+		<title>Password</title>
+		<input ng-model='signUp.passWord1' type='text'/>
+	</fieldset>
+	<fieldset>
+		<title>Re-type Password</title>
+		<input ng-model='signUp.passWord2' type='text'/>
+	</fieldset>
+	<fieldset>
+		<button ng-submit="submit()">submit</button>
+	</fieldset>
+</form>

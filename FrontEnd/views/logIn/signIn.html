@@ -1,0 +1,13 @@
+<form id='signIn' ng-controller='signInCtrl'>
+	<fieldset>
+		<title>User Name</title>
+		<input ng-model='signIn.userName' type='text'/>
+	</fieldset>
+	<fieldset>
+		<title>Password</title>
+		<input ng-model='signIn.passWord' type='text'/>
+	</fieldset>
+	<fieldset>
+		<button ng-submit="submit()">submit</button>
+	</fieldset>
+</form>
