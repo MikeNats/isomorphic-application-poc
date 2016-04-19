@@ -54,10 +54,10 @@ module.exports = (grunt) => {
 					files:[ './FrontEnd/views/**/*.html' ],
 					tasks: [ 'html_minify']
 				},
-				uglify: {
-					files:[ './FrontEnd/src/**/*.js' ],
-					tasks: [ 'uglify']
-				}
+				// uglify: {
+				// 	files:[ './FrontEnd/src/**/*.js' ],
+				// 	tasks: [ 'uglify']
+				// }
 			},
 			karma: {
 				unit: {
