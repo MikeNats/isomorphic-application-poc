@@ -16,7 +16,7 @@
 
 import authModule from '../authModule';
 
-authModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, signUpApiFctry) => {
+authModule.controller('signUpCtrl', ['$scope', ($scope) => {
 	$scope.signUp = {
 		userName: '',
 		passWord1: '',

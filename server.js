@@ -17,4 +17,8 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/FrontEnd/app/index.html');
 });
 
+app.get('/sign-in', function(req, res) {
+	console.log(req, res);
+});
+
 module.exports = app;

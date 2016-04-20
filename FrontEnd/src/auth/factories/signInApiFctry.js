@@ -13,7 +13,6 @@
  */
 
 import authModule from '../authModule';
-import API_PATHS from '../../api/consts/API_PATHS';
 
 authModule.factory('signInApiFctry', ['$http', 'API_PATHS', ($http, API_PATHS) => {
 	return (userName, passWord) => {

@@ -13,10 +13,11 @@
  */
 
 import authModule from '../authModule';
-import API_PATHS from '../../api/consts/API_PATHS';
 
 authModule.factory('signUpApiFctry', ['$http', 'API_PATHS', ($http, API_PATHS) => {
 	return (userName, passWord) => {
+		console.log(userName, passWord);
+
 		return $http({
 			method: 'POST',
 			url: API_PATHS.SIGN_UP,

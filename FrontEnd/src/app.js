@@ -1,8 +1,10 @@
 'use strict';
 
-var angular = require('angular'),
-	app = angular
-	.module('app', ['authModule', require('angular-ui-router'), 'authModule', 'apiModule'])
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+
+var app = angular
+	.module('app', [uiRouter, 'authModule', 'apiModule'])
 	.config(['$stateProvider', '$urlRouterProvider',
 		($stateProvider, $urlRouterProvider) => {
 			/**
