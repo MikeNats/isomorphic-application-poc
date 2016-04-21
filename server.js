@@ -8,18 +8,26 @@
 'use strict';
 
 import express from 'express';
-import auth from './BackEnd/auth/auth';
-	app = express(),
-	port = process.env.PORT || 3000,
-  FRONT_END_BASE_URL = '/FrontEnd/app/',
-  STATIC_FILES_URL = '/app/';
+import mongoose from 'mongoose';
+import authApi from './BackEnd/controllers/authApi';
+import getDbConnectionString from './BackEnd/configuration/getDbConnectionString'
 
+var app = express(),
+	port = process.env.PORT || 3000,
+	APP_URL = '/App/',
+	STATIC_FILES_URL = '/app/';
+
+//Set port
 app.listen(port);
 
-app.use(STATIC_FILES_URL, express.static(__dirname + FRONT_END_BASE_URL));
+//Set url for static file: css, js etc
+app.use(STATIC_FILES_URL, express.static(__dirname + APP_URL));
 
-app.get('/', function(req, res) {
-	res.sendFile(__dirname + FRONT_END_BASE_URL +'index.html');
-});
+//Db connection
+mongoose.connect(getDbConnectionString());
 
-auth(app);
+//Index Routing
+app.get('/', (req, res) => res.sendFile(__dirname + APP_URL + 'index.html'));
+
+//Authentication Routing
+authApi(app);

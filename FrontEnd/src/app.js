@@ -26,7 +26,7 @@ var app = angular
 				url: '/index',
 				views: {
 					indexPage: {
-						templateUrl: '/app/views/logIn/page-min.html'
+						templateUrl: '/app/views/logIn/page.html'
 					}
 				},
 				data: {

@@ -13,46 +13,48 @@ module.exports = (grunt) => {
 		],
 		config = {
 			browserify: {
-  				dist: {
-  					options: {
-                       	transform: [
-                          [ 'babelify', { 'presets': ['es2015'] }]
+				dist: {
+					options: {
+						transform: [
+                          ['babelify', {
+								'presets': ['es2015']
+							}]
                        	]
-                    },
+					},
 					files: {
-				      './FrontEnd/app/app.min.js': ['./FrontEnd/src/**/*.js']
-		    		}
-		    	}
-		    },
-		    html_minify: {
-		    	all: {
-			        files:[{
+						'./App/app.min.js': ['./FrontEnd/src/**/*.js']
+					}
+				}
+			},
+			html_minify: {
+				all: {
+					files: [{
 						expand: true,
 						cwd: './FrontEnd/',
-						src: ['views/**/*.html'],
-						dest: './FrontEnd/app/',
-						ext:'-min.html'
+						src: ['**/*.html', '*.html'],
+						dest: './App/',
+						ext: '.html'
 				    }]
-			    }
+				}
 			},
 			uglify: {
-			    my_target: {
+				my_target: {
 					files: {
-				        './FrontEnd/app/app.min.js': ['./FrontEnd/app/app.min.js']
-				    }
+						'./App/app.min.js': ['./FrontEnd/app/app.min.js']
+					}
 				}
 			},
 			eslint: {
 				target: ['./FrontEnd/**/*.js', './BackEnd/**/*.js']
 			},
-			watch:{
+			watch: {
 				browserify: {
-					files:[ './FrontEnd/src/**/*.js' ],
+					files: ['./FrontEnd/src/**/*.js'],
 					tasks: ['browserify']
 				},
 				html_minify: {
-					files:[ './FrontEnd/views/**/*.html' ],
-					tasks: [ 'html_minify']
+					files: ['./FrontEnd/views/**/*.html'],
+					tasks: ['html_minify']
 				},
 				// uglify: {
 				// 	files:[ './FrontEnd/src/**/*.js' ],
