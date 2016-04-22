@@ -16,23 +16,37 @@ import getDbConnectionUrl from './BackEnd/configuration/getDbConnectionUrl';
 const app = express(),
 	port = process.env.PORT || 3000;
 
-//Set port
+/**
+ * @description Set port
+ */
 app.listen(port);
 
-//Middle-Wear: Parse requests as json
+/**
+ * @description Middle-Wear: Parse requests as json
+ */
 app.use(bodyParser.json());
 
-//Middle-Wear: Log requests to the console
+/**
+ * @description Middle-Wear: Log requests to the console
+ */
 app.use(morgan('dev'));
 
-//Middle-Wear: Set root url for static files that are hard coded in the html files: .css, .js etc
+/**
+ * @description Middle-Wear: Set root url for static files that are hard coded in the html files: .css, .js etc
+ */
 app.use('/app/', express.static(__dirname + '/App/'));
 
-//Connect with database
+/**
+ * @description Connect with database
+ */
 mongoose.connect(getDbConnectionUrl());
 
-//Route: index page
+/**
+ * @description Router for index page
+ */
 app.get('/', (req, res) => res.sendFile(__dirname + '/App/index.html'));
 
-//Api: Authentication: signIn, signUp
+/**
+ * @description Authentication API for signIn, signUp
+ */
 authApi(app);
