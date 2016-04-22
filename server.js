@@ -1,33 +1,38 @@
 /**
  * Express Web Server
- * Listening to port 3000
+ * Listening to port 3000 or server port
+ * To start the server type in console `npm start`
  */
 
-
-//babel-node server.js is the command that should be run
 'use strict';
 
 import express from 'express';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
 import authApi from './BackEnd/controllers/authApi';
-import getDbConnectionString from './BackEnd/configuration/getDbConnectionString'
+import getDbConnectionUrl from './BackEnd/configuration/getDbConnectionUrl';
 
-var app = express(),
-	port = process.env.PORT || 3000,
-	APP_URL = '/App/',
-	STATIC_FILES_URL = '/app/';
+const app = express(),
+	port = process.env.PORT || 3000;
 
 //Set port
 app.listen(port);
 
-//Set url for static file: css, js etc
-app.use(STATIC_FILES_URL, express.static(__dirname + APP_URL));
+//Middle-Wear: Parse requests as json
+app.use(bodyParser.json());
 
-//Db connection
-mongoose.connect(getDbConnectionString());
+//Middle-Wear: Log requests to the console
+app.use(morgan('dev'));
 
-//Index Routing
-app.get('/', (req, res) => res.sendFile(__dirname + APP_URL + 'index.html'));
+//Middle-Wear: Set root url for static files that are hard coded in the html files: .css, .js etc
+app.use('/app/', express.static(__dirname + '/App/'));
 
-//Authentication Routing
+//Connect with database
+mongoose.connect(getDbConnectionUrl());
+
+//Route: index page
+app.get('/', (req, res) => res.sendFile(__dirname + '/App/index.html'));
+
+//Api: Authentication: signIn, signUp
 authApi(app);

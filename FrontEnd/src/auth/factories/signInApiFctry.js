@@ -15,7 +15,10 @@
 import authModule from '../authModule';
 
 authModule.factory('signInApiFctry', ['$http', 'API_PATHS', ($http, API_PATHS) => {
-	return (userName, passWord) => {
+	return ({
+		userName,
+		passWord
+	}) => {
 		return $http({
 			method: 'POST',
 			url: API_PATHS.SIGN_IN,

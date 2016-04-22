@@ -16,10 +16,14 @@
 
 import authModule from '../authModule';
 
-authModule.controller('signUpCtrl', ['$scope', ($scope) => {
-	$scope.signUp = {
+authModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, signUpApiFctry) => {
+	$scope.credentials = {
 		userName: '',
-		passWord1: '',
+		email: '',
+		passWord: '',
 		passWord2: ''
 	};
+	$scope.submit = () => {
+		signUpApiFctry($scope.credentials);
+	}
 }]);

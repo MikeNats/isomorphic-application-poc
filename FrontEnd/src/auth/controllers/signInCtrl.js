@@ -22,6 +22,6 @@ authModule.controller('signInCtrl', ['$scope', 'signInApiFctry', ($scope, signIn
 		passWord: '',
 	};
 	$scope.submit = () => {
-		signInApiFctry($scope.signIn.userName, $scope.signIn.passWord);
+		signInApiFctry($scope.credentials);
 	}
 }]);

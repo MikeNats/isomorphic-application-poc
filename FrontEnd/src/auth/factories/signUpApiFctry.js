@@ -15,18 +15,21 @@
 import authModule from '../authModule';
 
 authModule.factory('signUpApiFctry', ['$http', 'API_PATHS', ($http, API_PATHS) => {
-	return (userName, passWord) => {
-		console.log(userName, passWord);
-
+	return ({
+		userName,
+		email,
+		passWord
+	}) => {
 		return $http({
 			method: 'POST',
 			url: API_PATHS.SIGN_UP,
 			data: {
 				userName,
+				email,
 				passWord
 			}
 		}).success((serverResponse, status, headers, config) => {
-
+			console.log(serverResponse, status, headers, config);
 		}).error((serverResponse, status, headers, config) => {
 
 		});

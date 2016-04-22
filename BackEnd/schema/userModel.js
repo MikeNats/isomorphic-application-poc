@@ -1,12 +1,10 @@
-import mongoose 'mongoose';
+'use strict';
 
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose';
 
-const userSchema = new Schema({
-		userName: String,
-		passWord: String,
-		projects: [],
-	}),
-	User = mongoose.model('User', userSchema);
-
-export default Todos;
+export default mongoose.model('User', new mongoose.Schema({
+	userName: String,
+	email: String,
+	passWord: String,
+	projects: [],
+}));
