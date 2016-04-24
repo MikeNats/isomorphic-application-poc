@@ -5,7 +5,7 @@
  * @kind jsConcept
  * @type controller
  * @name signUpCtrl
- * @memberof module:authModule
+ * @memberof module:usersModule
  * @Description User registration logic.
  * @requires $scope
  * @requires signUpApiFctry
@@ -14,16 +14,16 @@
  * @since Angular 1.5.5
  */
 
-import authModule from '../authModule';
+import usersModule from '../usersModule';
 
-authModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, signUpApiFctry) => {
-	$scope.credentials = {
+usersModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, signUpApiFctry) => {
+	$scope.signUp = {
 		userName: '',
 		email: '',
 		passWord: '',
-		passWord2: ''
+		passWordValidation: ''
 	};
 	$scope.submit = () => {
-		signUpApiFctry($scope.credentials);
+		signUpApiFctry($scope.signUp);
 	}
 }]);

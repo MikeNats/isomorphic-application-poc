@@ -5,7 +5,7 @@
  * @kind jsConcept
  * @type controller
  * @name signInCtrl
- * @memberof module:authModule
+ * @memberof module:usersModule
  * @Description User authentication logic
  * @requires $scope
  * @requires signInApiFctry
@@ -14,14 +14,14 @@
  * @since Angular 1.5.5
  */
 
-import authModule from '../authModule';
+import usersModule from '../usersModule';
 
-authModule.controller('signInCtrl', ['$scope', 'signInApiFctry', ($scope, signInApiFctry) => {
+usersModule.controller('signInCtrl', ['$scope', 'signInApiFctry', ($scope, signInApiFctry) => {
 	$scope.signIn = {
 		userName: '',
 		passWord: '',
 	};
 	$scope.submit = () => {
-		signInApiFctry($scope.credentials);
+		signInApiFctry($scope.signIn);
 	}
 }]);

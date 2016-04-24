@@ -7,11 +7,11 @@
 'use strict';
 
 import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import authApi from './BackEnd/controllers/authApi';
+import mongoose from 'mongoose'; //Interact with our MongoDB database
+import globalMiddlewares from './BackEnd/globalMiddlewares/globalMiddlewares';
 import getDbConnectionUrl from './BackEnd/configuration/getDbConnectionUrl';
+import userRouter from './BackEnd/modules/users/middlewares/userRouter';
+
 
 const app = express(),
 	port = process.env.PORT || 3000;
@@ -22,24 +22,14 @@ const app = express(),
 app.listen(port);
 
 /**
- * @description Middle-Wear: Parse requests as json
- */
-app.use(bodyParser.json());
-
-/**
- * @description Middle-Wear: Log requests to the console
- */
-app.use(morgan('dev'));
-
-/**
- * @description Middle-Wear: Set root url for static files that are hard coded in the html files: .css, .js etc
- */
-app.use('/app/', express.static(__dirname + '/App/'));
-
-/**
  * @description Connect with database
  */
 mongoose.connect(getDbConnectionUrl());
+
+/**
+ * @description Use global middle-wares
+ */
+globalMiddlewares(app);
 
 /**
  * @description Router for index page
@@ -49,4 +39,4 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/App/index.html'));
 /**
  * @description Authentication API for signIn, signUp
  */
-authApi(app);
+userRouter(app);

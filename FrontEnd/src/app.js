@@ -4,7 +4,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 var app = angular
-	.module('app', [uiRouter, 'authModule', 'apiModule'])
+	.module('app', [uiRouter, 'usersModule'])
 	.config(['$stateProvider', '$urlRouterProvider',
 		($stateProvider, $urlRouterProvider) => {
 			/**
