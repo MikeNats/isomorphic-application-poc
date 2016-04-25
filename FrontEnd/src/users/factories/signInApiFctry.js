@@ -14,7 +14,7 @@
 
 import usersModule from '../usersModule';
 
-usersModule.factory('signInApiFctry', ['$http', 'USER_API_PATHS', ($http, USER_API_PATHS) => {
+usersModule.factory('signInApiFctry', ['$http', '$window', 'USER_API_PATHS', ($http, $window, USER_API_PATHS) => {
 	return ({
 		userName,
 		passWord
@@ -26,8 +26,8 @@ usersModule.factory('signInApiFctry', ['$http', 'USER_API_PATHS', ($http, USER_A
 				userName,
 				passWord
 			}
-		}).success((serverResponse, status, headers, config) => {
-
+		}).success((userData, status, headers, config) => {
+			$window.sessionStorage.token = userData.token;
 		}).error((serverResponse, status, headers, config) => {
 
 		});

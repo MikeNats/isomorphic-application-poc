@@ -31,8 +31,8 @@ usersModule.factory('signUpApiFctry', ['$http', 'USER_API_PATHS', ($http, USER_A
 				email,
 				passWord
 			}
-		}).success((serverResponse, status, headers, config) => {
-			console.log(serverResponse, status, headers, config);
+		}).success((userData, status, headers, config) => {
+			$window.sessionStorage.token = userData.token;
 		}).error((serverResponse, status, headers, config) => {
 
 		});
