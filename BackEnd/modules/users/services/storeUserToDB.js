@@ -1,5 +1,6 @@
 'use strict';
 
+
 import User from '../../../schema/userModel';
 
 let newUser = (req) => { //return new user Instance

@@ -1,5 +1,6 @@
 'use strict';
 
+
 import config from '../../../configuration/config';
 
 export default (res, req) => {

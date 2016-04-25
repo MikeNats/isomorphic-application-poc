@@ -1,5 +1,6 @@
 'use strict';
 
+
 import dbCredentials from './config'
 
 export default () => {
