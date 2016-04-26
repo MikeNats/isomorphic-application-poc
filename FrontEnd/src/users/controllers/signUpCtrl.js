@@ -14,7 +14,6 @@
  * @since Angular 1.5.5
  */
 
-
 import usersModule from '../usersModule';
 
 usersModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, signUpApiFctry) => {

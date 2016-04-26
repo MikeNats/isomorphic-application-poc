@@ -1,5 +1,5 @@
- <section id='logIn'>
-
-	<ng-include src="'/app/views/logIn/signIn.html'"> </ng-include>
-    <ng-include src="'/app/views/logIn/signUp.html'"> </ng-include>
+ <section id='logIn' ng-controller="logInCtrl">
+ <button ng-click="logIn.setActive('signIn')">Sign In</button>  <button ng-click="logIn.setActive('signUp')">Sign Un</button>
+	<ng-include ng-show='logIn.signIn' src="'/app/views/logIn/signIn.html'"> </ng-include>
+    <ng-include ng-show='logIn.signUp' src="'/app/views/logIn/signUp.html'"> </ng-include>
 </section>

@@ -3,7 +3,6 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-
 var app = angular
 	.module('app', [uiRouter, 'usersModule'])
 	.config(['$stateProvider', '$urlRouterProvider',

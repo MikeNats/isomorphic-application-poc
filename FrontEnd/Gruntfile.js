@@ -1,6 +1,5 @@
 'use strict';
 
-
 module.exports = (grunt) => {
 
 	require('load-grunt-tasks')(grunt);
@@ -54,12 +53,12 @@ module.exports = (grunt) => {
 			uglify: {
 				my_target: {
 					files: {
-						'./App/app.min.js': ['./App/app.min.js']
+						'../App/app.min.js': ['../App/app.min.js']
 					}
 				}
 			},
 			eslint: {
-				target: ['./**/*.js', './BackEnd/**/*.js']
+				target: ['./**/*.js', './BackEnd/**/*.js'] //@todo fix paths
 			},
 			watch: {
 				browserify: {

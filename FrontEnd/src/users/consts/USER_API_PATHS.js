@@ -12,7 +12,6 @@
  * @since Angular 1.5.5
  */
 
-
 import usersModule from '../usersModule';
 
 usersModule.constant('USER_API_PATHS', {

@@ -4,7 +4,7 @@
  * @framework angular
  * @kind jsConcept
  * @type controller
- * @name signInCtrl
+ * @name logInCtrl
  * @memberof module:usersModule
  * @Description User authentication logic
  * @requires $scope
@@ -16,12 +16,14 @@
 
 import usersModule from '../usersModule';
 
-usersModule.controller('signInCtrl', ['$scope', 'signInApiFctry', ($scope, signInApiFctry) => {
-	$scope.signIn = {
-		userName: '',
-		passWord: '',
+usersModule.controller('logInCtrl', ['$scope', ($scope) => {
+	$scope.logIn = {
+		setActive: (panel) => {
+			$scope.logIn.signIn = false;
+			$scope.logIn.signUp = false;
+			$scope.logIn[panel] = true;
+		},
+		signIn: true,
+		signUp: false
 	};
-	$scope.submit = () => {
-		signInApiFctry($scope.signIn);
-	}
 }]);

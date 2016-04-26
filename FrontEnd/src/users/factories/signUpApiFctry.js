@@ -12,7 +12,6 @@
  * @since Angular 1.5.5
  */
 
-
 import usersModule from '../usersModule';
 
 usersModule.factory('signUpApiFctry', ['$http', 'USER_API_PATHS', ($http, USER_API_PATHS) => {

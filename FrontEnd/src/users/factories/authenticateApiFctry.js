@@ -12,7 +12,6 @@
  * @since Angular 1.5.5
  */
 
-
 import usersModule from '../usersModule';
 
 usersModule.factory('authenticateApiFctry', ['$http', '$window', 'USER_API_PATHS', ($http, $window, USER_API_PATHS) => {
