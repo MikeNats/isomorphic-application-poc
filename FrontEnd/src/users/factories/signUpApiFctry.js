@@ -14,7 +14,7 @@
 
 import usersModule from '../usersModule';
 
-usersModule.factory('signUpApiFctry', ['$http', 'USER_API_PATHS', ($http, USER_API_PATHS) => {
+usersModule.factory('signUpApiFctry', ['$http', 'USER_API_PATHS', '$window', '$location', ($http, $window, $location, USER_API_PATHS) => {
 	return ({
 		userName,
 		email,
@@ -33,6 +33,7 @@ usersModule.factory('signUpApiFctry', ['$http', 'USER_API_PATHS', ($http, USER_A
 			}
 		}).success((userData, status, headers, config) => {
 			$window.sessionStorage.token = userData.token;
+			$location.path('/createEditProject');
 		}).error((serverResponse, status, headers, config) => {
 
 		});

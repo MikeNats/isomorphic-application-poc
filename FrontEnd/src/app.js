@@ -26,12 +26,17 @@ var app = angular
 				url: '/index',
 				views: {
 					indexPage: {
-						templateUrl: '/app/views/logIn/page.html'
+						templateUrl: '/app/views/logIn/page.html',
+						data: {
+							requireLogin: false
+						}
+					},
+					createEditProject: '/app/views/createEdit/page.html',
+					data: {
+						requireLogin: true
 					}
-				},
-				data: {
-					requireLogin: false
 				}
+
 			});
 			}]);
 

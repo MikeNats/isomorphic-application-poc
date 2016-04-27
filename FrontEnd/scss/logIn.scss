@@ -1,0 +1,40 @@
+#logIn{
+
+	bottom: 0;
+	display: table;
+	float: none;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	top: 25%;
+
+	article{
+		border-radius: 5px;
+		background-color: #ddd;
+		padding-top: 20px;
+		button{
+			width: 50%;
+			float: left;
+			border-radius: 5px;
+			color:#333;
+		}
+		tittle{
+			font-size: 12px;
+		}
+		input{
+			border-radius: 5px;
+		}
+		button.active{
+			cursor: normal;
+			background-color: transparent;
+		}
+		fieldset{
+			button{
+				width:100%;
+				color:#333;
+			}
+		}
+	}
+
+}

@@ -1,13 +1,13 @@
-<form id='signIn' ng-controller='signInCtrl'>
+<form id='signIn'  ng-controller='signInCtrl'>
 	<fieldset>
-		<title>User Name</title>
+		<tittle class='large-16'>User Name</tittle>
 		<input ng-model='signIn.userName' type='text' required />
 	</fieldset>
 	<fieldset>
-		<title>Password</title>
+		<tittle class='large-16'>Password</tittle>
 		<input ng-model='signIn.passWord' type='text' required/>
 	</fieldset>
 	<fieldset>
-		<button ng-click="submit()">submit</button>
+		<button class='button expanded' ng-click="submit()">submit</button>
 	</fieldset>
 </form>

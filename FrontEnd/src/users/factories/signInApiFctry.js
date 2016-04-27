@@ -14,7 +14,7 @@
 
 import usersModule from '../usersModule';
 
-usersModule.factory('signInApiFctry', ['$http', '$window', 'USER_API_PATHS', ($http, $window, USER_API_PATHS) => {
+usersModule.factory('signInApiFctry', ['$http', '$window', '$location', 'USER_API_PATHS', ($http, $window, $location, USER_API_PATHS) => {
 	return ({
 		userName,
 		passWord
@@ -28,6 +28,7 @@ usersModule.factory('signInApiFctry', ['$http', '$window', 'USER_API_PATHS', ($h
 			}
 		}).success((userData, status, headers, config) => {
 			$window.sessionStorage.token = userData.token;
+			$location.path('/createEditProject');
 		}).error((serverResponse, status, headers, config) => {
 
 		});
