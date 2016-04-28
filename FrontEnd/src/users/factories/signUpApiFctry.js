@@ -33,6 +33,7 @@ usersModule.factory('signUpApiFctry', ['$http', 'USER_API_PATHS', '$window', '$l
 			}
 		}).success((userData, status, headers, config) => {
 			$window.sessionStorage.token = userData.token;
+			console.log('heloo');
 			$location.path('/createEditProject');
 		}).error((serverResponse, status, headers, config) => {
 

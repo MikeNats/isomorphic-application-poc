@@ -22,8 +22,8 @@ usersModule.factory('authenticateApiFctry', ['$http', '$window', 'USER_API_PATHS
 			token: $window.sessionStorage.token
 		}
 	}).success((userData, status, headers, config) => {
-		$window.sessionStorage.token = userData.token;
+		//return true;
 	}).error((serverResponse, status, headers, config) => {
-
+		//return false;
 	});
 }]);

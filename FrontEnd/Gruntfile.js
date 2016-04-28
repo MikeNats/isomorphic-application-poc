@@ -46,7 +46,7 @@ module.exports = (grunt) => {
 						loadPath: ['node_modules/foundation-sites/assets']
 					},
 					files: {
-						'../App/app.min.css': './scss/app.scss',
+						'../App/app.min.css': ['./scss/**/*.scss', './scss/*.scss'],
 					}
 				}
 			},

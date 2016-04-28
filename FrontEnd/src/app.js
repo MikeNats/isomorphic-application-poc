@@ -5,39 +5,41 @@ import uiRouter from 'angular-ui-router';
 
 var app = angular
 	.module('app', [uiRouter, 'usersModule'])
+	//.run(['$rootScope', '$state', '$stateParams', 'authenticateApiFctry',
+	//($rootScope, $state, $stateParams, authenticateApiFctry) => {
+	/** Authentication  before page load **/
+	// $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
+	// 	if (!toState.data.requireLogin) {
+	// 		event.preventDefault();
+	// 		//	$state.go('index');
+	// 	}
+	// });
+	//	}])
 	.config(['$stateProvider', '$urlRouterProvider',
-		($stateProvider, $urlRouterProvider) => {
-			/**
-			 * @framework angular
-			 * @kind jsConcept
-			 * @type configuration
-			 * @name config
-			 * @memberof module:app
-			 * @requires $stateProvide
-			 * @requires $urlRouterProvider
-			 * @Description Routing of the App
-			 *
-			 */
-
-			$urlRouterProvider.otherwise('/index');
-
-			// Home //
-			$stateProvider.state('index', {
-				url: '/index',
-				views: {
-					indexPage: {
-						templateUrl: '/app/views/logIn/page.html',
-						data: {
-							requireLogin: false
+		($stateProvider, $urlRouterProvider) => { //Router
+			$stateProvider.state('index', { // Home
+					url: '/index',
+					views: {
+						indexPage: {
+							templateUrl: '/app/views/logIn/page.html',
 						}
 					},
-					createEditProject: '/app/views/createEdit/page.html',
+					data: {
+						requireLogin: false
+					}
+				})
+				.state('createEditProject', { // Create Edit project
+					url: '/createEditProject',
+					views: {
+						createEditProject: {
+							templateUrl: '/app/views/createEdit/page.html',
+						}
+					},
 					data: {
 						requireLogin: true
 					}
-				}
-
-			});
-			}]);
+				});
+			$urlRouterProvider.otherwise('/index'); //Default redirect
+	}]);
 
 console.log('running!!!');
