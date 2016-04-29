@@ -1,6 +1,5 @@
 'use strict';
 
-
 import userApi from '../controllers/userApi';
 
 export default (app) => {

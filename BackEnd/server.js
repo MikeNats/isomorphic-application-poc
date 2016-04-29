@@ -13,8 +13,6 @@ import globalMiddlewares from './globalMiddlewares/globalMiddlewares';
 import getDbConnectionUrl from './configuration/getDbConnectionUrl';
 import userRouter from './modules/users/middlewares/userRouter';
 
-
-
 const app = express(),
 	port = process.env.PORT || 3000;
 
@@ -36,8 +34,7 @@ globalMiddlewares(app);
 /**
  * @description Router for index page
  */
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '..') + '/App/index.html'));
-console.log(path.join(__dirname, '..') + '/App/index.html');
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '..') + '/App/views/index.html'));
 
 /**
  * @description Authentication API for signIn, signUp

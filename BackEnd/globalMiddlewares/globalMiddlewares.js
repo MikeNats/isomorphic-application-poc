@@ -1,6 +1,5 @@
 'use strict';
 
-
 import express from 'express';
 import morgan from 'morgan'; //Log's requests to the console
 import bodyParser from 'body-parser'; //Get parameters from our POST requests

@@ -5,25 +5,27 @@
  * @kind jsConcept
  * @type factory
  * @name signIn
- * @memberof module:usersModule
- * @description Sign In Api.
+ * @memberof module:usersAuthModule
+ * @description Sign Up Api.
  * @author Michail Tsougkranis
  * @version 1.0
  * @since Angular 1.5.5
  */
 
-import usersModule from '../usersModule';
+import usersAuthModule from '../usersAuthModule';
 
-usersModule.factory('signInApiFctry', ['$http', '$window', '$location', 'USER_API_PATHS', ($http, $window, $location, USER_API_PATHS) => {
+usersAuthModule.factory('signUpApiFctry', ['$http', '$window', '$location', 'USER_API_PATHS', ($http, $window, $location, USER_API_PATHS) => {
 	return ({
 		userName,
+		email,
 		passWord
 	}) => {
 		return $http({
 			method: 'POST',
-			url: USER_API_PATHS.SIGN_IN,
+			url: USER_API_PATHS.SIGN_UP,
 			data: {
 				userName,
+				email,
 				passWord
 			}
 		}).success((userData, status, headers, config) => {

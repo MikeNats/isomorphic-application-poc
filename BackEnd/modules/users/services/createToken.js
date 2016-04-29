@@ -1,6 +1,5 @@
 'use strict';
 
-
 import jwt from 'jsonwebtoken'; //JSON Web Tokens
 import config from '../../../configuration/config';
 

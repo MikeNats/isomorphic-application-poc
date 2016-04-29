@@ -1,0 +1,25 @@
+<form id="signIn"  ng-submit="submit()" ng-controller="signInCtrl">
+
+	<fieldset>
+		<title class = "large-16"> User Name </title>
+		<input  ng-model = "signIn.userName"
+				type = "text"
+				ng-class = "{'error' : signIn.error}"
+				required />
+	</fieldset>
+
+	<fieldset>
+		<title class = "large-16">  Password </title>
+		<input 	ng-model = "signIn.passWord"
+				ng-class = "{'error' : signIn.error}"
+				type = "password"
+				required />
+	</fieldset>
+
+	<fieldset>
+		<input  class = "button expanded"
+		   		type = "submit"
+		   		value = "Submit" />
+	</fieldset>
+
+</form>

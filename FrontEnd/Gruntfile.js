@@ -23,7 +23,7 @@ module.exports = (grunt) => {
                        	]
 					},
 					files: {
-						'../App/app.min.js': ['./src/**/*.js']
+						'../App/app.min.js': ['./app.js', './modules/**/*.js']
 					}
 				}
 			},
@@ -32,8 +32,8 @@ module.exports = (grunt) => {
 					files: [{
 						expand: true,
 						cwd: './',
-						src: ['./views/**/*.html', '*.html'],
-						dest: '../App/',
+						src: ['./index.html', './modules/**/*.html', './pages/*.html'],
+						dest: '../App/views/',
 						ext: '.html'
 				    }]
 				}
@@ -62,15 +62,15 @@ module.exports = (grunt) => {
 			},
 			watch: {
 				browserify: {
-					files: ['./src/**/*.js'],
+					files: ['./modules/**/*.js', 'app.js'],
 					tasks: ['browserify']
 				},
 				html_minify: {
-					files: ['./views/**/*.html'],
+					files: ['./**/*.html', './index.html'],
 					tasks: ['html_minify']
 				},
 				sass: {
-					files: './scss/**/*.scss',
+					files: './scss/**',
 					tasks: ['sass']
 				},
 				uglify: {

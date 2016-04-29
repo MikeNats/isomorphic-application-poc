@@ -1,6 +1,6 @@
 'use strict';
 
-
+import jwt from 'jsonwebtoken'; //JSON Web Tokens
 import config from '../../../configuration/config';
 
 export default (res, req) => {
@@ -9,9 +9,8 @@ export default (res, req) => {
 	if (token) { //if token exists
 		jwt.verify(token, config.superSecret, (err) => {
 			if (err) { //if token expired
-				res.status(403).json({
-					success: false,
-					message: 'Token is not valid'
+				res.status(503).json({
+					status: 'Service Unavailable'
 				});
 			} else { //if token is valid
 				res.json({
@@ -20,8 +19,8 @@ export default (res, req) => {
 			}
 		});
 	} else { //if token not found
-		res.status(403).send({
-			success: false,
+		res.status(401).json({
+			status: 'Unauthorized'
 		});
 
 	}

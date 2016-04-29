@@ -5,7 +5,7 @@
  * @kind jsConcept
  * @type controller
  * @name logInCtrl
- * @memberof module:usersModule
+ * @memberof module:usersAuthModule
  * @Description User authentication logic
  * @requires $scope
  * @requires signInApiFctry
@@ -14,9 +14,9 @@
  * @since Angular 1.5.5
  */
 
-import usersModule from '../usersModule';
+import usersAuthModule from '../usersAuthModule';
 
-usersModule.controller('logInCtrl', ['$scope', ($scope) => {
+usersAuthModule.controller('logInCtrl', ['$scope', ($scope) => {
 	$scope.logIn = {
 		setActive: (panel) => {
 			$scope.logIn.signIn = false;

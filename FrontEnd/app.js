@@ -4,24 +4,24 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 var app = angular
-	.module('app', [uiRouter, 'usersModule'])
-	//.run(['$rootScope', '$state', '$stateParams', 'authenticateApiFctry',
-	//($rootScope, $state, $stateParams, authenticateApiFctry) => {
-	/** Authentication  before page load **/
-	// $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
-	// 	if (!toState.data.requireLogin) {
-	// 		event.preventDefault();
-	// 		//	$state.go('index');
-	// 	}
-	// });
-	//	}])
+	.module('app', [uiRouter, 'usersAuthModule'])
+	.run(['$rootScope', '$state', '$stateParams', 'authenticateApiFctry', ($rootScope, $state, $stateParams, authenticateApiFctry) => {
+		$rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
+			if (toState.data.requireLogin) { //Authentication before page load
+				authenticateApiFctry.error(() => {
+					event.preventDefault();
+					$state.go('index');
+				});
+			}
+		});
+	}])
 	.config(['$stateProvider', '$urlRouterProvider',
 		($stateProvider, $urlRouterProvider) => { //Router
 			$stateProvider.state('index', { // Home
 					url: '/index',
 					views: {
 						indexPage: {
-							templateUrl: '/app/views/logIn/page.html',
+							templateUrl: 'App/views/pages/logIn.html'
 						}
 					},
 					data: {
@@ -32,7 +32,7 @@ var app = angular
 					url: '/createEditProject',
 					views: {
 						createEditProject: {
-							templateUrl: '/app/views/createEdit/page.html',
+							templateUrl: 'App/views/pages/createEditProject.html',
 						}
 					},
 					data: {
@@ -41,5 +41,3 @@ var app = angular
 				});
 			$urlRouterProvider.otherwise('/index'); //Default redirect
 	}]);
-
-console.log('running!!!');

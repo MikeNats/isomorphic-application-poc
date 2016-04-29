@@ -3,7 +3,7 @@
 /**
  * @framework angular
  * @kind module
- * @name usersModule
+ * @name usersAuthModule
  * @public
  * @static
  * @description Contains User Authentication Services.
@@ -13,4 +13,4 @@
  */
 
 import angular from 'angular';
-export default angular.module('usersModule', []);
+export default angular.module('usersAuthModule', []);

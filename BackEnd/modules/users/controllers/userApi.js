@@ -1,6 +1,5 @@
 'use strict';
 
-
 import express from 'express';
 import USER_API_PATHS from '../consts/USER_API_PATHS';
 import getUserFromDB from '../services/getUserFromDB';

@@ -5,16 +5,17 @@
  * @kind jsConcept
  * @type constant
  * @name API_PATHS
- * @memberof module:usersModule
+ * @memberof module:usersAuthModule
  * @Description Contains Api urls
  * @author Michail Tsougkranis
  * @version 1.0
  * @since Angular 1.5.5
  */
 
-import usersModule from '../usersModule';
+import usersAuthModule from '../usersAuthModule';
 
-usersModule.constant('USER_API_PATHS', {
+usersAuthModule.constant('USER_API_PATHS', {
 	SIGN_IN: '/api/sign-in',
 	SIGN_UP: '/api/sign-up',
+	AUTH: 'api/auth'
 });

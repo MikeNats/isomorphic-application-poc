@@ -1,8 +1,10 @@
 #logIn{
 
+	background: transparent none repeat scroll 0 0;
 	bottom: 0;
 	display: table;
 	float: none;
+	height: 100%;
 	left: 0;
 	margin: auto;
 	position: absolute;
@@ -10,29 +12,45 @@
 	top: 0;
 
 	article{
+
 		border-radius: 5px;
-		background-color: #ddd;
-		padding-top: 20px;
-		button{
-			width: 50%;
-			float: left;
+		display: table-cell;
+		float: none;
+		max-height: 200px;
+		overflow: hidden;
+		vertical-align: middle;
+
+		div{
+			padding-top: 20px;
+			background-color:#ddd;
 			border-radius: 5px;
-			color:#333;
-		}
-		tittle{
-			font-size: 12px;
-		}
-		input{
-			border-radius: 5px;
-		}
-		button.active{
-			cursor: normal;
-			background-color: transparent;
-		}
-		fieldset{
+
 			button{
-				width:100%;
+				width: 50%;
+				float: left;
+				border-radius: 5px;
 				color:#333;
+			}
+			title{
+				font-size: 12px;
+				display: block;
+				float: left;
+			}
+			input{
+				border-radius: 5px;
+			}
+			input[type = submit]{
+				color:#333;
+			}
+			button.active{
+				cursor: normal;
+				background-color: transparent;
+			}
+			fieldset{
+				button{
+					width:100%;
+					color:#333;
+				}
 			}
 		}
 	}

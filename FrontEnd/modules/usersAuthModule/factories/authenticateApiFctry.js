@@ -5,16 +5,16 @@
  * @kind jsConcept
  * @type factory
  * @name signIn
- * @memberof module:usersModule
+ * @memberof module:usersAuthModule
  * @description User authentication.
  * @author Michail Tsougkranis
  * @version 1.0
  * @since Angular 1.5.5
  */
 
-import usersModule from '../usersModule';
+import usersAuthModule from '../usersAuthModule';
 
-usersModule.factory('authenticateApiFctry', ['$http', '$window', 'USER_API_PATHS', ($http, $window, USER_API_PATHS) => {
+usersAuthModule.factory('authenticateApiFctry', ['$http', '$window', 'USER_API_PATHS', ($http, $window, USER_API_PATHS) => {
 	return $http({
 		method: 'POST',
 		url: USER_API_PATHS.AUTH,
@@ -22,8 +22,8 @@ usersModule.factory('authenticateApiFctry', ['$http', '$window', 'USER_API_PATHS
 			token: $window.sessionStorage.token
 		}
 	}).success((userData, status, headers, config) => {
-		//return true;
+
 	}).error((serverResponse, status, headers, config) => {
-		//return false;
+
 	});
 }]);

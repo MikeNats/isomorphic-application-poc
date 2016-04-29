@@ -1,0 +1,24 @@
+ <section id='logIn' class='columns large-5 medium-8 small-16' ng-controller="logInCtrl">
+
+	 <article>
+
+		<div class='columns large-16'>
+		 	<button 	class='button'
+		 				ng-class= "{'active': logIn.signIn}"
+		 				ng-click="logIn.setActive('signIn')"
+		 				>Sign In</button>
+
+		 	 <button  	class='button'
+		 	 		  	ng-class= "{'active': logIn.signUp}"
+		 	 		  	ng-click="logIn.setActive('signUp')">
+		 	 		  	Sign Up</button>
+
+			<ng-include ng-show='logIn.signIn' src="'/App/views/modules/usersAuthModule/views/signIn.html'"> </ng-include>
+
+		    <ng-include ng-show='logIn.signUp' src="'/App/views/modules/usersAuthModule/views/signUp.html'"> </ng-include>
+
+		</div>
+
+	 </article>
+
+</section>
