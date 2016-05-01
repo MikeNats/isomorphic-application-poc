@@ -1,34 +1,35 @@
 <form id="signUp" name="signUp"  ng-submit="submit()" ng-controller="signUpCtrl" >
 
 	<fieldset>
-		<title class = "large-16"> User Name </title>
-		<input  ng-model = "signUp.userName"
-				ng-class = "{'error' : validationError.userName}"
+		<title  class = "large-16"> User Name </title>
+		<input  ng-model = "signup.userName"
 				type = "text"
 				required />
 	</fieldset>
 
 	<fieldset>
-		<title class = "large-16"> Email </title>
-		<input  ng-model = "signUp.email"
-				ng-class = "{'error' : validationError.email}"
+		<title  class = "large-16"> Email </title>
+		<input  ng-model = "signup.email"
+				ng-class = "{'error': emailError}"
 				type = "email"
 				required />
 	</fieldset>
 
 	<fieldset>
-		<title class = "large-16"> Password </title>
-		<input  ng-model = "signUp.passWord"
-				ng-class = "{'error' : validationError.password}"
+		<title  class = "large-16"> Password </title>
+		<input  ng-model = "signup.passWord"
+				ng-class = "{'error': passWordError}"
 				type = "password"
 				required />
 	</fieldset>
 
 	<fieldset>
-		<title class = "large-16"> Re-type Password </title>
-		<input  ng-model = "signUp.passWordValidation"
-				ng-class = "{'error' : validationError.password}"
+		<title  class = "large-16"> Re-type Password </title>
+		<input  ng-model = "signup.reTypedPassWord"
+				ng-class = "{'error': passWordError}"
+				password = "{{signup.passWord}}"
 				type = "password"
+				validate-re-typed-pass-word
 				required />
 	</fieldset>
 

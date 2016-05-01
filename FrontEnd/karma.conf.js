@@ -5,33 +5,46 @@ module.exports = function(config) {
 	config.set({
 
 		// base path that will be used to resolve all patterns (eg. files, exclude)
-		basePath: '',
+		basePath: './',
 
 
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-		frameworks: ['jasmine'],
+		frameworks: ['browserify', 'jasmine'],
 
 
 		// list of files / patterns to load in the browser
 		files: [
+            'modules/**/*.js',
+			'node_modules/angular-mocks/angular-mocks.js',
             'Tests/UnitTests/**/*.js'
         ],
+
+		preprocessors: {
+			'modules/**/*.js': ['browserify'],
+			'Tests/UnitTests/**/*.js': ['browserify']
+		},
 
 
 		// list of files to exclude
 		exclude: [],
 
 
-		// preprocess matching files before serving them to the browser
-		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-		preprocessors: {},
-
-
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
 		reporters: ['progress'],
+
+		browserify: {
+			debug: true,
+			transform: [
+                [
+                    'babelify', {
+						'presets': ['es2015']
+                    }
+                ]
+            ]
+		},
 
 
 		// web server port

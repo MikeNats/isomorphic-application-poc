@@ -16,7 +16,7 @@
 
 import usersAuthModule from '../usersAuthModule';
 
-usersAuthModule.controller('signInCtrl', ['$scope', 'signInApiFctry', ($scope, signInApiFctry) => {
+usersAuthModule.controller('signInCtrl', ['$scope', 'signInApiFctry', function signInCtrl($scope, signInApiFctry) {
 	$scope.signIn = {
 		userName: '',
 		passWord: '',

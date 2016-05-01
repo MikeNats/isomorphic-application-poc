@@ -7,8 +7,9 @@ var app = angular
 	.module('app', [uiRouter, 'usersAuthModule'])
 	.run(['$rootScope', '$state', '$stateParams', 'authenticateApiFctry', ($rootScope, $state, $stateParams, authenticateApiFctry) => {
 		$rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
+
 			if (toState.data.requireLogin) { //Authentication before page load
-				authenticateApiFctry.error(() => {
+				authenticateApiFctry().error(() => {
 					event.preventDefault();
 					$state.go('index');
 				});
@@ -41,3 +42,5 @@ var app = angular
 				});
 			$urlRouterProvider.otherwise('/index'); //Default redirect
 	}]);
+
+export default app;

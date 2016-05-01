@@ -17,23 +17,23 @@
 import usersAuthModule from '../usersAuthModule';
 
 usersAuthModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, signUpApiFctry) => {
-	$scope.signUp = {
+	$scope.signup = {
 		userName: '',
 		email: '',
 		passWord: '',
-		passWordValidation: ''
+		reTypedPassWord: ''
 	};
-	$scope.validationError = {
-		userName: false,
-		email: false,
-		password: false
-	};
-	$scope.submit = () => {
-		signUpApiFctry($scope.signUp)
-			.success(() => {
+	$scope.emailError = '';
+	$scope.passWordError = '';
 
+	$scope.submit = () => {
+		console.log('____________');
+		signUpApiFctry($scope.signup)
+			.success(() => {
+				$scope.signup.validEmail = false;
 			}).error(() => {
-				$scope.validationError.email = true;
+				$scope.signup.validEmail = true;
 			});
 	};
+
 }]);

@@ -16,14 +16,15 @@
 
 import usersAuthModule from '../usersAuthModule';
 
-usersAuthModule.controller('logInCtrl', ['$scope', ($scope) => {
-	$scope.logIn = {
+usersAuthModule.controller('logInPanelCtrl', ['$scope', ($scope) => {
+	$scope.logInPanel = {
 		setActive: (panel) => {
-			$scope.logIn.signIn = false;
-			$scope.logIn.signUp = false;
-			$scope.logIn[panel] = true;
+			$scope.logInPanel.signIn = false;
+			$scope.logInPanel.signUp = false;
+			$scope.logInPanel[panel] = true;
 		},
 		signIn: true,
 		signUp: false
 	};
+
 }]);
