@@ -11,7 +11,7 @@ import path from 'path';
 import mongoose from 'mongoose'; //Interact with our MongoDB database
 import globalMiddlewares from './globalMiddlewares/globalMiddlewares';
 import getDbConnectionUrl from './configuration/getDbConnectionUrl';
-import userRouter from './modules/users/middlewares/userRouter';
+import userRouter from './modules/usersAuthpiModule/middlewares/userRouter';
 
 const app = express(),
 	port = process.env.PORT || 3000;
@@ -24,7 +24,7 @@ app.listen(port);
 /**
  * @description Connect with database
  */
-mongoose.connect(getDbConnectionUrl());
+mongoose.connect(getDbConnectionUrl().prodaction);
 
 /**
  * @description Use global middle-wares
@@ -40,3 +40,5 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, '..') + '/App/views
  * @description Authentication API for signIn, signUp
  */
 userRouter(app);
+
+export default app

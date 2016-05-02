@@ -29,7 +29,7 @@ describe('validateReTypedPassWord', () => {
 		expect($rootScope.signUpModel.passWordError).toBe(true);
 	});
 
-	it('should set passWordError to false if retyped password dont match', () => {
+	it('should set passWordError to false if retyped password match', () => {
 		$rootScope.signUpModel.passWord = 'pass1';
 		$rootScope.signUpModel.reTypedPassWord = 'pass1';
 		$rootScope.$digest();

@@ -6,6 +6,7 @@
 	<fieldset>
 		<title  class = "large-16"> User Name </title>
 		<input  ng-model = "signUpModel.userName"
+				ng-class = "{'error': signUpModel.userNameError}"
 				type = "text"
 				id = 'signUpUserName'
 				required />

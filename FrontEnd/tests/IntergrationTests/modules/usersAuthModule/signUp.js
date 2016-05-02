@@ -7,7 +7,7 @@ let pageUrl,
 	submit;
 
 describe('SignUp', () => {
-	it('should NOT redirect if user passWord is not given twice correct', () => {
+	it('should NOT redirect if user types passWord twice correct', () => {
 		browser.get(browser.baseUrl);
 		pageUrl = browser.baseUrl;
 		element(by.id('tab2')).click();
@@ -36,6 +36,17 @@ describe('SignUp', () => {
 		submit.click();
 
 		expect(email.getAttribute('class')).toContain('error');
+		expect(browser.getCurrentUrl()).toEqual(pageUrl);
+	});
+
+	it('should NOT redirect if user name is all ready registered', () => {
+		userName.clear().sendKeys('mike');
+		email.clear().sendKeys('mike@gmail.com');
+		passWord.clear().sendKeys('mike');
+		reTypePassWord.clear().sendKeys('mike');
+		submit.click();
+
+		expect(userName.getAttribute('class')).toContain('error');
 		expect(browser.getCurrentUrl()).toEqual(pageUrl);
 	});
 });

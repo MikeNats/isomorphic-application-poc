@@ -16,7 +16,6 @@ export default (req, res) => {
 	newUser(req).save((err) => { //Store user
 		if (err) { //if DB connection error
 			res.status(403).json({
-				success: false,
 				message: 'Unable to reach DB'
 			});
 		}

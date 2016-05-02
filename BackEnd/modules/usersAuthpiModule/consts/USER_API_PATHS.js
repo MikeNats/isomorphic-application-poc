@@ -3,5 +3,6 @@
 export default {
 	SIGN_IN: '/sign-in',
 	SIGN_UP: '/sign-up',
-	AUTH: '/auth'
+	AUTH: '/auth',
+	DELETE: '/delete'
 };

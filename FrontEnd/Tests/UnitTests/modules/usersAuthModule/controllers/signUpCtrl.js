@@ -35,6 +35,9 @@ describe('signUpCtrl', () => {
 		it('should have attribute reTypedPassWord set to empty string', () => {
 			expect($scope.signUpModel.reTypedPassWord).toEqual('');
 		});
+		it('should have attribute userNameError set to false', () => {
+			expect($scope.signUpModel.userNameError).toEqual(false);
+		});
 		it('should have attribute emailError set to false', () => {
 			expect($scope.signUpModel.emailError).toEqual(false);
 		});
@@ -48,18 +51,54 @@ describe('signUpCtrl', () => {
 		it('should been attached on the scope', () => {
 			expect($scope.submit).toEqual(jasmine.any(Function));
 		});
-		it('on success should set $scope.signUpModel.validEmail to false', () => {
+		it('should set $scope.signUpModel.emailError to false on success', () => {
 			$deferred.resolve();
 			$scope.submit();
 			$scope.$apply();
 
 			expect($scope.signUpModel.emailError).toEqual(false);
 		});
-		it('on error should set $scope.signUpModel.validEmail to true', () => {
-			$deferred.reject();
+		it('should set $scope.signUpModel.userNameError to false on success', () => {
+			$deferred.resolve();
 			$scope.submit();
 			$scope.$apply();
 
+			expect($scope.signUpModel.userNameError).toEqual(false);
+		});
+		it('should set only $scope.signUpModel.userNameError to true if user name all ready exists in DB', () => {
+			$deferred.reject({
+				data: {
+					wrongFields: ['userNameError']
+				}
+			});
+			$scope.submit();
+			$scope.$apply();
+
+			expect($scope.signUpModel.emailError).toEqual(false);
+			expect($scope.signUpModel.userNameError).toEqual(true);
+		});
+		it('should set only $scope.signUpModel.emailError to true if email is all ready exists in DB', () => {
+			$deferred.reject({
+				data: {
+					wrongFields: ['emailError']
+				}
+			});
+			$scope.submit();
+			$scope.$apply();
+
+			expect($scope.signUpModel.emailError).toEqual(true);
+			expect($scope.signUpModel.userNameError).toEqual(false);
+		});
+		it('should set only $scope.signUpModel.emailError && $scope.signUpModel.emailError to true if both all ready exists in DB', () => {
+			$deferred.reject({
+				data: {
+					wrongFields: ['emailError', 'userNameError']
+				}
+			});
+			$scope.submit();
+			$scope.$apply();
+
+			expect($scope.signUpModel.userNameError).toEqual(true);
 			expect($scope.signUpModel.emailError).toEqual(true);
 		});
 	});

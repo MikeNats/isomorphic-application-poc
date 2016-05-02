@@ -22,9 +22,10 @@ usersAuthModule.directive('validateReTypedPassWord', () => {
 				if (scope.signUpModel.reTypedPassWord !== attrs.password) {
 					scope.signUpModel.passWordError = true;
 				} else {
-					scope.passWordError = false;
+					scope.signUpModel.passWordError = false;
 				}
 			});
+
 		}
 	}
 });

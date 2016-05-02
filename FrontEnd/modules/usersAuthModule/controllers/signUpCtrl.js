@@ -22,6 +22,7 @@ usersAuthModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, s
 		email: '',
 		passWord: '',
 		reTypedPassWord: '',
+		userNameError: false,
 		emailError: false,
 		passWordError: false
 	};
@@ -29,10 +30,12 @@ usersAuthModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, s
 	$scope.submit = () => {
 		signUpApiFctry.signUp('/createEditProject', $scope.signUpModel)
 			.then(() => {
-				$scope.signUpModel.emailError = false;
-			}, () => {
-				$scope.signUpModel.emailError = true;
+				$scope.signUpModel['userNameError'] = false;
+				$scope.signUpModel['emailError'] = false;
+			}, (repsonse) => {
+				repsonse.data.wrongFields.forEach((wrongField) => {
+					$scope.signUpModel[wrongField] = true;
+				});
 			});
 	};
-
 }]);
