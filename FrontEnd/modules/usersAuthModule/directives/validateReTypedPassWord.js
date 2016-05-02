@@ -3,10 +3,10 @@
 /**
  * @framework angular
  * @kind jsConcept
- * @type factory
- * @name signIn
+ * @type directive
+ * @name validateReTypedPassWord
  * @memberof module:usersAuthModule
- * @description Sign Up Api.
+ * @description Validates the re typed password
  * @author Michail Tsougkranis
  * @version 1.0
  * @since Angular 1.5.5
@@ -18,11 +18,11 @@ usersAuthModule.directive('validateReTypedPassWord', () => {
 	return {
 		restrict: 'A',
 		link: (scope, element, attrs) => {
-			scope.$watch('signUpModel.reTypedPassWord', () => {
-				if (scope.signUpModel.reTypedPassWord !== attrs.password) {
-					scope.signUpModel.passWordError = true;
+			scope.$watch('signUpModel.reTypedPassWord', () => { //when user is typing in the reTypedPassWord input
+				if (scope.signUpModel.reTypedPassWord !== attrs.password) { //attrs.password is populated by the password value. If attr value is different with reTypedPassWord value
+					scope.signUpModel.passWordError = true; // set ng-class error active
 				} else {
-					scope.signUpModel.passWordError = false;
+					scope.signUpModel.passWordError = false; // set ng-class error inactive
 				}
 			});
 

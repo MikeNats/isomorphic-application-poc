@@ -1,19 +1,21 @@
 'use strict';
 
 let $scope,
-	$deferred;
+	$deferred,
+	$window;
 
 describe('signUpCtrl', () => {
 	beforeEach(() => {
 		angular.mock.module('usersAuthModule');
 
-		inject((_$rootScope_, _$controller_, _signUpApiFctry_, _$q_) => {
+		inject((_$rootScope_, _$controller_, _userAuthApiFctry_, _$q_, _$window_) => {
 			$scope = _$rootScope_.$new(); // Gets the rootScope_ with .apply
+			$window = _$window_; //Get global window
 			$deferred = _$q_.defer(); // To create a mock instance of defer
-			spyOn(_signUpApiFctry_, 'signUp').and.returnValue($deferred.promise); // Jasmine Spy to return the $deferred promise
+			spyOn(_userAuthApiFctry_, 'signUp').and.returnValue($deferred.promise); // Jasmine Spy to return the $deferred promise
 			_$controller_('signUpCtrl', {
 				$scope: $scope,
-				signUpApiFctry: _signUpApiFctry_
+				userAuthApiFctry: _userAuthApiFctry_
 			});
 		});
 	});
@@ -52,14 +54,34 @@ describe('signUpCtrl', () => {
 			expect($scope.submit).toEqual(jasmine.any(Function));
 		});
 		it('should set $scope.signUpModel.emailError to false on success', () => {
-			$deferred.resolve();
+			$deferred.resolve({
+				data: {
+					token: 'validTokken'
+				}
+			});
 			$scope.submit();
 			$scope.$apply();
 
 			expect($scope.signUpModel.emailError).toEqual(false);
 		});
+
+		it('should set $window.sessionStorage.token on success', () => {
+			$deferred.resolve({
+				data: {
+					token: 'validTokken'
+				}
+			});
+			$scope.submit();
+			$scope.$apply();
+
+			expect($window.sessionStorage.token.length === 'token').toEqual(false);
+		});
 		it('should set $scope.signUpModel.userNameError to false on success', () => {
-			$deferred.resolve();
+			$deferred.resolve({
+				data: {
+					token: 'validTokken'
+				}
+			});
 			$scope.submit();
 			$scope.$apply();
 

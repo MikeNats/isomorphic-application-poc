@@ -15,6 +15,7 @@ describe('usersAuthpiModule', () => {
 	}
 
 	describe('SignUp', () => {
+
 		it('should Sign Up if user is Unique', (done) => {
 			request(appConfig.devUrl)
 				.post('/api' + USER_API_PATHS.SIGN_UP)
@@ -28,7 +29,6 @@ describe('usersAuthpiModule', () => {
 					done();
 				});
 		});
-
 		it('should NOT Sign Up if user is Not Unique', (done) => {
 			request(appConfig.devUrl)
 				.post('/api' + USER_API_PATHS.SIGN_UP)
@@ -45,6 +45,7 @@ describe('usersAuthpiModule', () => {
 	});
 
 	describe('SignIn', () => {
+
 		it('should Sign In if userName and passWord are Valid', (done) => {
 			request(appConfig.devUrl)
 				.post('/api' + USER_API_PATHS.SIGN_IN)
@@ -59,7 +60,6 @@ describe('usersAuthpiModule', () => {
 					done();
 				});
 		});
-
 		it('should NOT Sign In if userName and passWord are NOT Valid', (done) => {
 			user.userName = 'invalidUserName';
 			user.passWrod = 'invalidpassWrod';
@@ -79,6 +79,7 @@ describe('usersAuthpiModule', () => {
 	});
 
 	describe('Authenticate', () => {
+
 		it('should Sign In if token is Valid', (done) => {
 			request(appConfig.devUrl)
 				.post('/api' + USER_API_PATHS.AUTH)

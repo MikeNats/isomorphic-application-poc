@@ -6,7 +6,8 @@
  * @type controller
  * @name signUpCtrl
  * @memberof module:usersAuthModule
- * @Description User registration logic.
+ * @Description Sign up: User registration,.
+ * @requires $scope
  * @requires $scope
  * @requires signUpApiFctry
  * @author Michail Tsougkranis
@@ -16,7 +17,23 @@
 
 import usersAuthModule from '../usersAuthModule';
 
-usersAuthModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, signUpApiFctry) => {
+usersAuthModule.controller('signUpCtrl', ['$scope', '$window', '$location', 'userAuthApiFctry', ($scope, $window, $location, userAuthApiFctry) => {
+	let signUpSuccess = (serverResponse) => {
+			removeErrors();
+			$window.sessionStorage.token = serverResponse.data.token;
+			$location.path('/createEditProject');
+		},
+		signUpFailed = (serverResponse) => {
+			removeErrors();
+			serverResponse.data.wrongFields.forEach((wrongField) => {
+				$scope.signUpModel[wrongField] = true;
+			});
+		},
+		removeErrors = () => {
+			$scope.signUpModel['userNameError'] = false;
+			$scope.signUpModel['emailError'] = false;
+		};
+
 	$scope.signUpModel = {
 		userName: '',
 		email: '',
@@ -27,15 +44,12 @@ usersAuthModule.controller('signUpCtrl', ['$scope', 'signUpApiFctry', ($scope, s
 		passWordError: false
 	};
 
-	$scope.submit = () => {
-		signUpApiFctry.signUp('/createEditProject', $scope.signUpModel)
-			.then(() => {
-				$scope.signUpModel['userNameError'] = false;
-				$scope.signUpModel['emailError'] = false;
-			}, (repsonse) => {
-				repsonse.data.wrongFields.forEach((wrongField) => {
-					$scope.signUpModel[wrongField] = true;
-				});
+	$scope.submit = () => { //sign up user
+		userAuthApiFctry.signUp($scope.signUpModel) //On success will redirect to given path
+			.then((serverResponse) => { //If success set error to false
+				signUpSuccess(serverResponse);
+			}, (serverResponse) => { //If fail api will provide an array string with the fields that were wrong, and these fields will have the ng-class error active
+				signUpFailed(serverResponse);
 			});
 	};
 }]);

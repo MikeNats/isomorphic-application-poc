@@ -1,19 +1,21 @@
 'use strict';
 
 let $scope,
-	$deferred;
+	$deferred,
+	$window;
 
 describe('signInCtrl', () => {
 	beforeEach(() => {
 		angular.mock.module('usersAuthModule');
 
-		inject((_$rootScope_, _$controller_, _signInApiFctry_, _$q_) => {
+		inject((_$rootScope_, _$controller_, _userAuthApiFctry_, _$q_, _$window_) => {
 			$scope = _$rootScope_.$new(); // Gets the rootScope_ with .apply
+			$window = _$window_; //Get global window
 			$deferred = _$q_.defer(); // To create a mock instance of defer
-			spyOn(_signInApiFctry_, 'signIn').and.returnValue($deferred.promise); // Jasmine Spy to return the $deferred promise
+			spyOn(_userAuthApiFctry_, 'signIn').and.returnValue($deferred.promise); // Jasmine Spy to return the $deferred promise
 			_$controller_('signInCtrl', {
 				$scope: $scope,
-				signInApiFctry: _signInApiFctry_
+				userAuthApiFctry: _userAuthApiFctry_
 			});
 		});
 	});
@@ -36,14 +38,29 @@ describe('signInCtrl', () => {
 		it('should been attached on the scope', () => {
 			expect($scope.submit).toEqual(jasmine.any(Function));
 		});
-		it('on success should set $scope.signInModel.error to false', () => {
-			$deferred.resolve();
+		it('should set $scope.signInModel.error to false on success ', () => {
+			$deferred.resolve({
+				data: {
+					token: 'validTokken'
+				}
+			});
 			$scope.submit();
 			$scope.$apply();
 
 			expect($scope.signInModel.error).toEqual(false);
 		});
-		it('on error should set $scope.signInModel.error to true', () => {
+		it('should set $window.sessionStorage.token on success ', () => {
+			$deferred.resolve({
+				data: {
+					token: 'validTokken'
+				}
+			});
+			$scope.submit();
+			$scope.$apply();
+
+			expect($window.sessionStorage.token.length === 'token').toEqual(false);
+		});
+		it('should set $scope.signInModel.error to true on error ', () => {
 			$deferred.reject();
 			$scope.submit();
 			$scope.$apply();

@@ -1,5 +1,3 @@
-/* jasmine specs for controllers go here */
-
 'use strict';
 
 let $scope = {};

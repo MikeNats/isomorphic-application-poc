@@ -28,8 +28,8 @@ describe('SignIn', () => {
 		expect(browser.getCurrentUrl()).not.toEqual(pageUrl);
 	});
 	it('should set a token in the session storage', () => {
-		browser.driver.executeScript("return window.sessionStorage.getItem('token');").then((value) => {
-			expect(value.length === 1036).toBe(true);
+		browser.driver.executeScript("return window.sessionStorage.getItem('token');").then((token) => {
+			expect(token.length > 1000).toBe(true);
 		});
 	});
 });

@@ -5,10 +5,13 @@ import uiRouter from 'angular-ui-router';
 
 var app = angular
 	.module('app', [uiRouter, 'usersAuthModule'])
-	.run(['$rootScope', '$state', '$stateParams', 'authenticateApiFctry', ($rootScope, $state, $stateParams, authenticateApiFctry) => {
+	.run(['$rootScope', '$state', '$stateParams', '$window', '$location', 'userAuthApiFctry', ($rootScope, $state, $stateParams, $window, $location, userAuthApiFctry) => {
 		$rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
 			if (toState.data.requireLogin) { //If page need authentication
-				authenticateApiFctry.user(); //Authenticate User
+				userAuthApiFctry.authUser($window.sessionStorage.token)
+					.error(() => {
+						$location.path('/index'); //redirect to index page
+					}); //Authenticate User
 			}
 		});
 	}])
