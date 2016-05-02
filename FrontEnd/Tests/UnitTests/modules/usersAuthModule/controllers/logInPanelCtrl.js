@@ -2,45 +2,50 @@
 
 'use strict';
 
-let $controller,
-	$scope,
-	controller;
+let $scope = {};
 
 describe('logInPanelCtrl', () => {
+
 	beforeEach(() => {
 		angular.mock.module('usersAuthModule');
 
 		inject((_$controller_) => {
-			$controller = _$controller_;
-			$scope = {};
-			controller = $controller('logInPanelCtrl', {
+			_$controller_('logInPanelCtrl', {
 				$scope: $scope
 			});
 		});
 	});
 
-	it('should have attached logIn Object to its scope', () => {
-		expect($scope.logInPanel).toEqual(jasmine.any(Object));
-	});
-	it('should have attached on logIn a method signInApiFctry', () => {
-		expect($scope.logInPanel.setActive).toEqual(jasmine.any(Function));
-	});
-	it('should set visible the sign-In tap on initialization', () => {
-		expect($scope.logInPanel.signIn).toBe(true);
-	});
-	it('should set inVisible the sign-Up tap on initialization', () => {
-		expect($scope.logInPanel.signUp).toBe(false);
-	});
-	it('should set visible the sign-Up tap if sign-Up Tap is clicked', () => {
-		$scope.logInPanel.setActive('signUp');
+	describe('logInPanel', () => {
 
-		expect($scope.logInPanel.signIn).toBe(false);
-		expect($scope.logInPanel.signUp).toBe(true);
-	});
-	it('should set visible the sign-Up tap if sign-Up Tap is clicked', () => {
-		$scope.logInPanel.setActive('signIn');
+		describe('signInTab', () => {
+			it('should be visible on initialization', () => {
+				expect($scope.logInPanelModel.signInTab).toBe(true);
+			});
+		});
 
-		expect($scope.logInPanel.signIn).toBe(true);
-		expect($scope.logInPanel.signUp).toBe(false);
+		describe('signUpTab', () => {
+			it('sshould be INvisible on initialization', () => {
+				expect($scope.logInPanelModel.signUpTab).toBe(false);
+			});
+		});
+
+		describe('setActive', () => {
+			it('should be function', () => {
+				expect($scope.logInPanelModel.setActive).toEqual(jasmine.any(Function));
+			});
+			it('should set visible the sign-Up tab if sign-Up Tab is clicked', () => {
+				$scope.logInPanelModel.setActive('signUpTab');
+
+				expect($scope.logInPanelModel.signInTab).toBe(false);
+				expect($scope.logInPanelModel.signUpTab).toBe(true);
+			});
+			it('should set visible the sign-In tab if sign-In Tab is clicked', () => {
+				$scope.logInPanelModel.setActive('signInTab');
+
+				expect($scope.logInPanelModel.signInTab).toBe(true);
+				expect($scope.logInPanelModel.signUpTab).toBe(false);
+			});
+		});
 	});
 });

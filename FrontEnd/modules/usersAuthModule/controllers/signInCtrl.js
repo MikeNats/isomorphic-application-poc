@@ -17,18 +17,17 @@
 import usersAuthModule from '../usersAuthModule';
 
 usersAuthModule.controller('signInCtrl', ['$scope', 'signInApiFctry', function signInCtrl($scope, signInApiFctry) {
-	$scope.signIn = {
+	$scope.signInModel = {
 		userName: '',
 		passWord: '',
 		error: false
 	};
 	$scope.submit = () => {
-		signInApiFctry($scope.signIn)
-			.success(() => {
-				$scope.signIn.error = false;
-			})
-			.error((response) => {
-				$scope.signIn.error = true;
+		signInApiFctry.signIn('/createEditProject', $scope.signInModel)
+			.then(() => {
+				$scope.signInModel.error = false;
+			}, () => {
+				$scope.signInModel.error = true;
 			});
 	}
 }]);

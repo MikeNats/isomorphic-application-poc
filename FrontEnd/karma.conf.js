@@ -17,18 +17,18 @@ module.exports = function(config) {
 		files: [
             'modules/**/*.js',
 			'node_modules/angular-mocks/angular-mocks.js',
-            'Tests/UnitTests/**/*.js'
+			'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+            'tests/UnitTests/**/*.js'
         ],
 
 		preprocessors: {
 			'modules/**/*.js': ['browserify'],
-			'Tests/UnitTests/**/*.js': ['browserify']
+			'tests/UnitTests/**/*.js': ['browserify']
 		},
 
 
 		// list of files to exclude
 		exclude: [],
-
 
 		// test results reporter to use
 		// possible values: 'dots', 'progress'

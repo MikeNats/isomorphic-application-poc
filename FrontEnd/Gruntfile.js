@@ -41,6 +41,9 @@ module.exports = (grunt) => {
 			sass: {
 				dist: {
 					options: {
+						cacheLocation: './node_modules/',
+						cache: false,
+						noCache: false,
 						style: 'compressed',
 						sourcemap: 'none',
 						loadPath: ['node_modules/foundation-sites/assets']
@@ -84,7 +87,6 @@ module.exports = (grunt) => {
 					singleRun: true,
 					autoWatch: false,
 					reporters: ['progress'],
-					logLevel: 'DEBUG',
 					browsers: ['PhantomJS']
 				}
 			}

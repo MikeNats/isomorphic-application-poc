@@ -4,9 +4,9 @@
  * @framework angular
  * @kind jsConcept
  * @type controller
- * @name logInCtrl
+ * @name logInPanelCtrl
  * @memberof module:usersAuthModule
- * @Description User authentication logic
+ * @Description Tab toggler
  * @requires $scope
  * @requires signInApiFctry
  * @author Michail Tsougkranis
@@ -17,14 +17,13 @@
 import usersAuthModule from '../usersAuthModule';
 
 usersAuthModule.controller('logInPanelCtrl', ['$scope', ($scope) => {
-	$scope.logInPanel = {
-		setActive: (panel) => {
-			$scope.logInPanel.signIn = false;
-			$scope.logInPanel.signUp = false;
-			$scope.logInPanel[panel] = true;
+	$scope.logInPanelModel = {
+		setActive: (tab) => {
+			$scope.logInPanelModel.signInTab = false;
+			$scope.logInPanelModel.signUpTab = false;
+			$scope.logInPanelModel[tab] = true;
 		},
-		signIn: true,
-		signUp: false
+		signInTab: true,
+		signUpTab: false
 	};
-
 }]);

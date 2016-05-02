@@ -18,9 +18,9 @@ usersAuthModule.directive('validateReTypedPassWord', () => {
 	return {
 		restrict: 'A',
 		link: (scope, element, attrs) => {
-			scope.$watch('signup.reTypedPassWord', () => {
-				if (scope.signup.reTypedPassWord !== attrs.password) {
-					scope.passWordError = true;
+			scope.$watch('signUpModel.reTypedPassWord', () => {
+				if (scope.signUpModel.reTypedPassWord !== attrs.password) {
+					scope.signUpModel.passWordError = true;
 				} else {
 					scope.passWordError = false;
 				}

@@ -14,18 +14,21 @@
 
 import usersAuthModule from '../usersAuthModule';
 
-usersAuthModule.factory('authenticateApiFctry', ['$http', '$window', 'USER_API_PATHS', ($http, $window, USER_API_PATHS) => {
-	return () => {
-		return $http({
-			method: 'POST',
-			url: USER_API_PATHS.AUTH,
-			data: {
-				token: $window.sessionStorage.token
-			}
-		}).success((userData, status, headers, config) => {
-
-		}).error((serverResponse, status, headers, config) => {
-
-		});
+//Usage on the router before state change
+usersAuthModule.factory('authenticateApiFctry', ['$http', '$window', '$location', 'USER_API_PATHS', ($http, $window, $location, USER_API_PATHS) => {
+	return {
+		user: () => {
+			return $http({
+				method: 'POST',
+				url: USER_API_PATHS.AUTH,
+				data: {
+					token: $window.sessionStorage.token
+				}
+			}).then((userData, status, headers, config) => {
+				//do nothing
+			}, (serverResponse, status, headers, config) => {
+				$location.path('/index'); //redirect to index page
+			});
+		}
 	};
 }]);

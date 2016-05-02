@@ -1,34 +1,41 @@
-<form id="signUp" name="signUp"  ng-submit="submit()" ng-controller="signUpCtrl" >
+<form 	id="signUp"
+		name="signUp"
+		ng-submit="submit()"
+		ng-controller="signUpCtrl" >
 
 	<fieldset>
 		<title  class = "large-16"> User Name </title>
-		<input  ng-model = "signup.userName"
+		<input  ng-model = "signUpModel.userName"
 				type = "text"
+				id = 'signUpUserName'
 				required />
 	</fieldset>
 
 	<fieldset>
 		<title  class = "large-16"> Email </title>
-		<input  ng-model = "signup.email"
-				ng-class = "{'error': emailError}"
+		<input  ng-model = "signUpModel.email"
+				ng-class = "{'error': signUpModel.emailError}"
 				type = "email"
+				id = 'signUpEmail'
 				required />
 	</fieldset>
 
 	<fieldset>
 		<title  class = "large-16"> Password </title>
-		<input  ng-model = "signup.passWord"
-				ng-class = "{'error': passWordError}"
+		<input  ng-model = "signUpModel.passWord"
+				ng-class = "{'error': signUpModel.passWordError}"
 				type = "password"
+				id = 'signUpPassWord'
 				required />
 	</fieldset>
 
 	<fieldset>
 		<title  class = "large-16"> Re-type Password </title>
-		<input  ng-model = "signup.reTypedPassWord"
-				ng-class = "{'error': passWordError}"
-				password = "{{signup.passWord}}"
+		<input  ng-model = "signUpModel.reTypedPassWord"
+				ng-class = "{'error': signUpModel.passWordError}"
+				password = "{{signUpModel.passWord}}"
 				type = "password"
+				id = 'signUpreTypePassWord'
 				validate-re-typed-pass-word
 				required />
 	</fieldset>
@@ -36,6 +43,7 @@
 	<fieldset>
 		<input  class = "button expanded"
 		   		type = "submit"
+		   		id = 'signUpSubmit'
 		   		value = "Submit" />
 	</fieldset>
 

@@ -15,22 +15,24 @@
 import usersAuthModule from '../usersAuthModule';
 
 usersAuthModule.factory('signInApiFctry', ['$http', '$window', '$location', 'USER_API_PATHS', ($http, $window, $location, USER_API_PATHS) => {
-	return ({
-		userName,
-		passWord
-	}) => {
-		return $http({
-			method: 'POST',
-			url: USER_API_PATHS.SIGN_IN,
-			data: {
-				userName,
-				passWord
-			}
-		}).success((serverResponse, status, headers, config) => {
-			$window.sessionStorage.token = serverResponse.token;
-			$location.path('/createEditProject');
-		}).error((serverResponse, status, headers, config) => {
+	return {
+		signIn: (url, {
+			userName,
+			passWord
+		}) => {
+			return $http({
+				method: 'POST',
+				url: USER_API_PATHS.SIGN_IN,
+				data: {
+					userName,
+					passWord
+				}
+			}).success((serverResponse, status, headers, config) => {
+				$window.sessionStorage.token = serverResponse.token;
+				$location.path(url);
+			}).error((serverResponse, status, headers, config) => {
 
-		});
+			});
+		}
 	};
 }]);
