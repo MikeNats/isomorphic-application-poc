@@ -5,6 +5,7 @@ let $scope,
 	$window;
 
 describe('signInCtrl', () => {
+
 	beforeEach(() => {
 		angular.mock.module('usersAuthModule');
 

@@ -17,18 +17,21 @@ describe('logInPanelCtrl', () => {
 	describe('logInPanel', () => {
 
 		describe('signInTab', () => {
+
 			it('should be visible on initialization', () => {
 				expect($scope.logInPanelModel.signInTab).toBe(true);
 			});
 		});
 
 		describe('signUpTab', () => {
+
 			it('sshould be INvisible on initialization', () => {
 				expect($scope.logInPanelModel.signUpTab).toBe(false);
 			});
 		});
 
 		describe('setActive', () => {
+
 			it('should be function', () => {
 				expect($scope.logInPanelModel.setActive).toEqual(jasmine.any(Function));
 			});
