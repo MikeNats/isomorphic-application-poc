@@ -43,8 +43,8 @@ describe('signUpCtrl', () => {
 		it('should have attribute emailError set to false', () => {
 			expect($scope.signUpModel.emailError).toEqual(false);
 		});
-		it('should have attribute passWordError set to false', () => {
-			expect($scope.signUpModel.passWordError).toEqual(false);
+		it('should have attribute reTypedPassWordError set to false', () => {
+			expect($scope.signUpModel.reTypedPassWordError).toEqual(false);
 		});
 	});
 

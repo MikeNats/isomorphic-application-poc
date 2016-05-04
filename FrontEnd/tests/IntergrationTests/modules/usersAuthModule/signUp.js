@@ -23,7 +23,6 @@ describe('SignUp', () => {
 		submit = element(by.id('signUpSubmit'));
 		submit.click();
 
-		expect(passWord.getAttribute('class')).toContain('error');
 		expect(reTypePassWord.getAttribute('class')).toContain('error');
 		expect(browser.getCurrentUrl()).toEqual(pageUrl);
 	});

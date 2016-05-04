@@ -24,6 +24,16 @@
 			padding-top: 20px;
 			background-color:#ddd;
 			border-radius: 5px;
+			p{
+				font-size: 8px;
+				color: red;
+				display: none;
+				width: 100%;
+				margin: -11px 0 5px 0;
+			}
+			p.errorMessage{
+				display: block;
+			}
 
 			button{
 				width: 50%;

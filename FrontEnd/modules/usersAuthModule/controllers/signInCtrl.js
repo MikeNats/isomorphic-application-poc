@@ -41,5 +41,5 @@ usersAuthModule.controller('signInCtrl', ['$scope', 'userAuthApiFctry', '$locati
 			}, () => { //If fails set error to true
 				signInFailed();
 			});
-	}
+	};
 }]);

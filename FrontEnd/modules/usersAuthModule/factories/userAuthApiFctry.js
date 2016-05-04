@@ -17,28 +17,27 @@
 import usersAuthModule from '../usersAuthModule';
 
 usersAuthModule.factory('userAuthApiFctry', ['$http', 'USER_API_PATHS', ($http, USER_API_PATHS) => {
+	let api = (method, url, data) => {
+		return $http({
+			method: method,
+			url: url,
+			data: data
+		});
+	};
+
 	return {
-		signIn: ({
+		signIn: ({ //Sends data to validate user
 			userName,
 			passWord
 		}) => {
-
-			return $http({
-				method: 'POST',
-				url: USER_API_PATHS.SIGN_IN,
-				data: { //Sends data to validate user
-					userName,
-					passWord
-				}
+			return api('POST', USER_API_PATHS.SIGN_IN, {
+				userName,
+				passWord
 			});
 		},
-		authUser: (token) => { //Use on the router before $state change
-			return $http({
-				method: 'POST',
-				url: USER_API_PATHS.AUTH,
-				data: {
-					token: token //will send token for authentication
-				}
+		authUser: (token) => { //Use on the router before $state change, will send token for authentication
+			return api('POST', USER_API_PATHS.AUTH, {
+				token: token
 			});
 		},
 		signUp: ({
@@ -46,15 +45,16 @@ usersAuthModule.factory('userAuthApiFctry', ['$http', 'USER_API_PATHS', ($http, 
 			email,
 			passWord
 		}) => {
+			return api('POST', USER_API_PATHS.SIGN_UP, {
+				userName,
+				email,
+				passWord
+			});
 
-			return $http({
-				method: 'POST',
-				url: USER_API_PATHS.SIGN_UP,
-				data: {
-					userName,
-					email,
-					passWord
-				}
+		},
+		isUserNameValid: (userName) => {
+			return api('POST', USER_API_PATHS.IS_USER_NAME_VALID, {
+				userName
 			});
 		}
 	};

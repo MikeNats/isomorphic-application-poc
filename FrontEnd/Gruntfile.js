@@ -5,13 +5,13 @@ module.exports = (grunt) => {
 	require('load-grunt-tasks')(grunt);
 
 	let npmTask = [
-		   	'grunt-karma',
-		   	'grunt-browserify',
-		   	'grunt-html-minify',
-		   	'grunt-contrib-watch',
-		   	'grunt-contrib-uglify',
-		   	'grunt-contrib-sass'
-		],
+      'grunt-karma',
+      'grunt-browserify',
+      'grunt-html-minify',
+      'grunt-contrib-watch',
+      'grunt-contrib-uglify',
+      'grunt-contrib-sass'
+    ],
 		config = {
 			browserify: {
 				dist: {
@@ -19,8 +19,8 @@ module.exports = (grunt) => {
 						transform: [
                           ['babelify', {
 								'presets': ['es2015']
-							}]
-                       	]
+              }]
+                        ]
 					},
 					files: {
 						'../App/app.min.js': ['./app.js', './modules/**/*.js']
@@ -35,7 +35,7 @@ module.exports = (grunt) => {
 						src: ['./index.html', './modules/**/*.html', './pages/*.html'],
 						dest: '../App/views/',
 						ext: '.html'
-				    }]
+            }]
 				}
 			},
 			sass: {
@@ -61,7 +61,7 @@ module.exports = (grunt) => {
 				}
 			},
 			eslint: {
-				target: ['./**/*.js', './BackEnd/**/*.js'] //@todo fix paths
+				files: ['./modules/**/*.js']
 			},
 			watch: {
 				browserify: {

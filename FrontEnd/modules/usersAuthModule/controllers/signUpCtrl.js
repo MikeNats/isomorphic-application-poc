@@ -41,7 +41,8 @@ usersAuthModule.controller('signUpCtrl', ['$scope', '$window', '$location', 'use
 		reTypedPassWord: '',
 		userNameError: false,
 		emailError: false,
-		passWordError: false
+		passWordError: false,
+		reTypedPassWordError: false
 	};
 
 	$scope.submit = () => { //sign up user

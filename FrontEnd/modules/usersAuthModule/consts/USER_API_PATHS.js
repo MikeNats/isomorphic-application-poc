@@ -17,5 +17,6 @@ import usersAuthModule from '../usersAuthModule';
 usersAuthModule.constant('USER_API_PATHS', {
 	SIGN_IN: '/api/sign-in',
 	SIGN_UP: '/api/sign-up',
-	AUTH: 'api/auth'
+	AUTH: 'api/auth',
+	IS_USER_NAME_VALID: 'api/is-user-name-valid'
 });
