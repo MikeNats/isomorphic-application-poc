@@ -24,11 +24,9 @@ usersAuthModule.directive('validateUserName', ['userAuthApiFctry', (userAuthApiF
 					scope.signUpModel.userNameError = false;
 				} else {
 					userAuthApiFctry.isUserNameValid(scope.signUpModel.userName).then(() => {
-						console.log('in');
 						scope.signUpModel.userNameError = false;
 					}, () => {
 						scope.signUpModel.userNameError = true;
-						console.log('out');
 					});
 
 				}

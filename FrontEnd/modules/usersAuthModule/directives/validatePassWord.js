@@ -15,7 +15,7 @@
 import usersAuthModule from '../usersAuthModule';
 
 usersAuthModule.directive('validatePassWord', () => {
-	let passRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/; //1 Special Character, 1 Digit, 8 Characters
+	let passRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/; //1 Special Character, 1 Digit, 8 Characters
 
 	return {
 		restrict: 'A',
