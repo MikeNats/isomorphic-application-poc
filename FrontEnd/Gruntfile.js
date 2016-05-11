@@ -12,16 +12,19 @@ module.exports = (grunt) => {
       'grunt-contrib-uglify',
       'grunt-contrib-sass'
     ],
+		istanbul = require('browserify-istanbul'),
 		config = {
 			browserify: {
 				dist: {
 					options: {
 						transform: [
-                          ['babelify', {
-								'presets': ['es2015']
-              }]
+                            ['babelify', {
+									'presets': ['es2015']
+              				 }
+              				]
                         ]
 					},
+
 					files: {
 						'../App/app.min.js': ['./app.js', './modules/**/*.js']
 					}
@@ -83,10 +86,18 @@ module.exports = (grunt) => {
 			},
 			karma: {
 				unit: {
+					browserify: {
+						debug: true,
+						transform: [[
+				            'babelify', {
+									'presets': ['es2015']
+				            	}
+				            ], istanbul
+				            ]
+					},
 					configFile: 'karma.conf.js',
 					singleRun: true,
 					autoWatch: false,
-					reporters: ['progress'],
 					browsers: ['PhantomJS']
 				}
 			}
