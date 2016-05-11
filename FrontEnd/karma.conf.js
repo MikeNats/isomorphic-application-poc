@@ -23,7 +23,7 @@ module.exports = function(config) {
 
 		preprocessors: {
 			'modules/**/*.js': ['browserify'],
-			'tests/UnitTests/**/*.js': ['browserify']
+			'tests/UnitTests/**/*.js': ['browserify', 'coverage']
 		},
 
 
@@ -33,17 +33,15 @@ module.exports = function(config) {
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
-		reporters: ['progress'],
+		reporters: ['coverage', 'progress'],
 
-		browserify: {
-			debug: true,
-			transform: [
-                [
-                    'babelify', {
-						'presets': ['es2015']
-                    }
-                ]
-            ]
+		coverageReporter: {
+			dir: 'coverage/',
+			reporters: [
+				{
+					type: 'text-summary'
+				}
+          ]
 		},
 
 
